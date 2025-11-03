@@ -1,5 +1,5 @@
 from ..Utils.Utils import LRUCacheDict
-from ..Japanese.JapaneseG2P import japanese_to_phones
+from ..G2P.Dispatch import text_to_phones
 from ..Utils.Constants import BERT_FEATURE_DIM
 from ..Audio.Audio import load_audio
 from ..ModelManager import model_manager
@@ -53,7 +53,7 @@ class ReferenceAudio:
 
     def set_text(self, prompt_text: str) -> None:
         self.text = prompt_text
-        self.phonemes_seq = np.array([japanese_to_phones(prompt_text)], dtype=np.int64)
+        self.phonemes_seq = np.array([text_to_phones(prompt_text)], dtype=np.int64)
         self.text_bert: Optional[np.ndarray] = np.zeros((self.phonemes_seq.shape[1], BERT_FEATURE_DIM),
                                                         dtype=np.float32)
 

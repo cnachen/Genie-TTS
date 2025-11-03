@@ -11,7 +11,7 @@ from typing import Optional, List, Callable
 import pyaudio
 import logging
 
-from ..Japanese.Split import split_japanese_text
+from ..G2P.Split import split_japanese_text
 from ..Core.Inference import tts_client
 from ..ModelManager import model_manager
 from ..Utils.Shared import context
